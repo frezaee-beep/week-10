@@ -13,9 +13,6 @@ y = df["rating"]
 model = LinearRegression()
 model.fit(X, y)
 
-model = LinearRegression()
-model.fit(X, y)
-
 with open("model_1.pickle", "wb") as file:
     pickle.dump(model, file)
 
@@ -29,8 +26,8 @@ def roast_category(roast):
         "Dark": 4
     }
 
-    return roast_map.get(roast, np.nan) 
-   
+    return roast_map.get(roast, np.nan)
+
 df["roast_cat"] = df["roast"].apply(roast_category)
 
 # Train Decision Tree model
@@ -43,3 +40,4 @@ dtr.fit(X_2, y_2)
 # Save the trained model
 with open("model_2.pickle", "wb") as file:
     pickle.dump(dtr, file)
+
